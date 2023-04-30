@@ -6,9 +6,10 @@ import { Link } from "react-scroll";
 import { rgba } from "polished";
 import { DrawerContext } from "contexts/drawer/drawer-context";
 import Drawer from "components/drawer";
-import Logo from "components/logo";
+import logo from "assets/images/logo.png";
 import menuItems from "./header.data";
 import close from "assets/images/icons/close.png";
+import { NavLink } from "components/link";
 
 const NavbarDrawer = () => {
   const { state, dispatch } = useContext(DrawerContext);
@@ -42,7 +43,8 @@ const NavbarDrawer = () => {
     >
       <Box sx={styles.wrapper}>
         <div style={{ marginLeft: "30px", marginBottom: "40px" }}>
-          <h3>Greenzone Healthcare</h3>
+          {/* <h3>Greenzone Healthcare</h3> */}
+          <img width="250" src={logo} />
         </div>
         <Box as="ul" sx={styles.navbar}>
           {menuItems.map(({ path, label }, i) => (
@@ -61,7 +63,9 @@ const NavbarDrawer = () => {
           ))}
         </Box>
         <Button variant="primary" sx={styles.constactNow}>
-          Contact Us
+          <NavLink path={"contact"} label={"contact"}>
+            Contact Us
+          </NavLink>
         </Button>
       </Box>
     </Drawer>

@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx, Box, Flex, Container, Button } from "theme-ui";
 import Sticky from "react-stickynode";
-import Logo from "components/logo";
-import Image from "components/image";
 import { NavLink } from "components/link";
 import { DrawerProvider } from "contexts/drawer/drawer-provider";
+import logo from "assets/images/logo.png";
 import NavbarDrawer from "./navbar-drawer";
 import menuItems from "./header.data";
 import lock from "assets/images/icons/lock.png";
@@ -12,14 +11,26 @@ import lock from "assets/images/icons/lock.png";
 export default function Header() {
   return (
     <DrawerProvider>
+      <style jsx>{`
+        .logo {
+          height: 50px;
+        }
+        @media screen and (max-width: 600px) {
+          .logo {
+            height: 40px;
+          }
+        }
+      `}</style>
       <Box sx={styles.headerWrapper}>
         <Sticky enabled={true} top={0} activeClass="is-sticky" innerZ={100}>
           <Box as="header" sx={styles.header}>
             <Container>
               <Box sx={styles.headerInner}>
-                <div>
+                {/* <div>
                   <h2>Greenzone Healthcare</h2>
-                </div>
+                </div> */}
+
+                <img className="logo" src={logo} />
                 <Flex as="nav" sx={styles.navbar} className="navbar">
                   <Box as="ul" sx={styles.navList}>
                     {menuItems.map(({ path, label }, i) => (
@@ -127,6 +138,12 @@ const styles = {
     ml: "3px",
     path: {
       stroke: "text",
+    },
+  },
+  logo: {
+    height: "50px",
+    "@media (max-width: 600px)": {
+      height: "30px",
     },
   },
 };

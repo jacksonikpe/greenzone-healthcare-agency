@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, Text, Container } from "theme-ui";
 import { rgba } from "polished";
-import { Link } from "components/link";
+import logo from "assets/images/smallLogo.png";
 
 const menuItems = [
   {
@@ -33,12 +33,29 @@ const companyName = "Pagelab Digital";
 export default function Footer() {
   return (
     <Box as="footer" sx={styles.footer}>
+      <style jsx>{`
+        @media screen and (max-width: 600px) {
+          .text {
+            font-size: 15px;
+          }
+          .logo {
+            height: 30px;
+          }
+        }
+      `}</style>
       <Container>
         <Flex sx={styles.footerInner}>
           <Flex sx={styles.copyright}>
-            <h2 style={{ color: "white", margin: "0px" }}>
-              Greenzone Healthcare
-            </h2>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img className="logo" height="40" src={logo} />
+              <h2
+                className="text"
+                style={{ color: "white", margin: "0px 0px 0px 10px" }}
+              >
+                Greenzone Healthcare Limited
+              </h2>
+            </div>
+
             <Text as="span">
               {copyrightSymbol} {copyrightYear} {companyName}
             </Text>
